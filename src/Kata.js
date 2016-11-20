@@ -1,7 +1,5 @@
 function formatDuration(seconds) {
-  var s = 0, 
-      m = 0, 
-      h = 0,
+  var qty = 0, 
       values = [];
 
     if (seconds < 0) throw {
@@ -10,19 +8,29 @@ function formatDuration(seconds) {
     }
     if (seconds === 0) return 'now';
  
-    h = Math.floor(seconds/3600);
-    if (h >0) {
-      values.push(processUnit('hour',h));
-    }
-    
-    m = Math.floor((seconds%3600)/60);
-    if (m >0) {
-      values.push(processUnit('minute',m));
+    qty = Math.floor(seconds/31536000);
+    if (qty > 0) {
+      values.push(processUnit('year',qty));
     }
 
-    s = (seconds%3600)%60;
-    if (s >0) {
-      values.push(processUnit('second',s));
+    qty = Math.floor((seconds%31536000)/86400);
+    if (qty > 0) {
+      values.push(processUnit('day',qty));
+    }
+
+    qty = Math.floor((seconds%86400)/3600);
+    if (qty > 0) {
+      values.push(processUnit('hour',qty));
+    }
+    
+    qty = Math.floor((seconds%3600)/60);
+    if (qty > 0) {
+      values.push(processUnit('minute',qty));
+    }
+
+    qty = (seconds%3600)%60;
+    if (qty > 0) {
+      values.push(processUnit('second',qty));
     }
 
     return joinValues(values);

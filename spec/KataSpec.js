@@ -112,4 +112,54 @@ describe('Kata', function() {
       expect(formatDuration(7322)).toEqual('2 hours, 2 minutes and 2 seconds','Should return "2 hours, 2 minutes and 2 seconds".');
     });
   });
+
+  describe('processing days', function() {
+    it('should return "1 day" when 86400', function() {
+      expect(formatDuration(86400)).toEqual('1 day','Should return "1 day".');
+    });
+
+    it('should return "1 day and 1 second" when 86401', function() {
+      expect(formatDuration(86401)).toEqual('1 day and 1 second','Should return "1 day and 1 second".');
+    });
+
+    it('should return "1 day, 1 minute and 1 second" when 86461', function() {
+      expect(formatDuration(86461)).toEqual('1 day, 1 minute and 1 second','Should return "1 day, 1 minute and 1 second".');
+    });
+
+    it('should return "1 day, 1hour, 1 minute and 1 second" when 90061', function() {
+      expect(formatDuration(90061)).toEqual('1 day, 1 hour, 1 minute and 1 second','Should return "1 day, 1hour, 1 minute and 1 second".');
+    });
+
+    it('should return "2 days" when 172800', function() {
+      expect(formatDuration(86400)).toEqual('1 day','Should return "1 day".');
+    });
+
+    it('should return "2 days, 2 hours, 2 minutes and 2 seconds" when 90061', function() {
+      expect(formatDuration(180122)).toEqual('2 days, 2 hours, 2 minutes and 2 seconds',
+      'Should return "2 days, 2 hours, 2 minutes and 2 seconds".');
+    });
+  }); 
+
+  describe('processing years', function() {
+    it('should return "1 year" when 31536000', function() {
+      expect(formatDuration(31536000)).toEqual('1 year','Should return "1 year".');
+    });
+
+    it('should return "1 year and 1 second" when 31536001', function() {
+      expect(formatDuration(31536001)).toEqual('1 year and 1 second','Should return "1 year and 1 second".');
+    });
+
+    it('should return "1 year and 2 seconds" when 31536002', function() {
+      expect(formatDuration(31536002)).toEqual('1 year and 2 seconds','Should return "1 year and 2 seconds".');
+    });
+
+    it('should return "1 year, 1 minute and 1 second" when 31536061', function() {
+      expect(formatDuration(31536061)).toEqual('1 year, 1 minute and 1 second','Should return "1 year, 1 minute and 1 second".');
+    });
+
+    it('should return "2 years, 2 days, 2 hours, 2 minutes and 2 seconds" when 63252122', function() {
+      expect(formatDuration(63252122)).toEqual('2 years, 2 days, 2 hours, 2 minutes and 2 seconds',
+      'Should return "2 years, 2 days, 2 hours, 2 minutes and 2 seconds".');
+    });
+  });
 });
